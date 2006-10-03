@@ -87,8 +87,14 @@ node attribute ``size'' gives the size of the package in megabytes
 <<testMakeDepGraph0, cache=TRUE, results=hide, echo=TRUE>>=
 biocUrl <- biocReposList()["bioc"]
 cranUrl <- biocReposList()["cran"]
-biocDeps <- makeDepGraph(biocUrl, type="source")
-cranDeps <- makeDepGraph(cranUrl, type="source")
+if (interactive()) {
+    biocDeps <- makeDepGraph(biocUrl, type="source")
+    cranDeps <- makeDepGraph(cranUrl, type="source")
+} else {
+  load(system.file("doc/biocDeps.rda", package="pkgDepTools"))
+  load(system.file("doc/cranDeps.rda", package="pkgDepTools"))
+}
+
 @ 
 %
 <<testMakeDepGraph>>=
@@ -139,8 +145,12 @@ repositories.  Below, we create such a graph combining all CRAN and
 Bioconductor packages.
 
 <<demo-setup, cache=TRUE>>=
-allDeps <- makeDepGraph(biocReposList(), type="source",
-                        keep.builtin=TRUE)
+if (interactive()) {
+    allDeps <- makeDepGraph(biocReposList(), type="source",
+                            keep.builtin=TRUE)
+} else {
+  load(system.file("doc/allDeps.rda", package="pkgDepTools"))
+}
 
 @ 
 
