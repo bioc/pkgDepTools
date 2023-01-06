@@ -1,7 +1,7 @@
 Package: pkgDepTools
 Type: Package
 Title: Package Dependency Tools
-Version: 1.65.0
+Version: 1.65.1
 Authors@R: c(
     person("Seth", "Falcon", role="aut"),
     person(
@@ -23,3 +23,4 @@ Imports: graph, RBGL
 Suggests: Biobase, Rgraphviz, RCurl, BiocManager
 LazyLoad: Yes
 biocViews: Infrastructure, GraphAndNetwork
+PackageStatus: Deprecated
